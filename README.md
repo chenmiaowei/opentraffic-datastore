@@ -4,16 +4,14 @@ Open Traffic Datastore is part of OTv2, the new Open Traffic platform under deve
 
 The Datastore ingests input from distributed [Reporter](https://github.com/opentraffic/reporter) instances, powers an API for querying and visualization, and creates processed data products.
 
-#### Docker build
-
-    sudo docker build -t opentraffic/datastore .
-
-#### Docker Compose
-
-    PGDATA=. DATAPATH=. sudo -E docker-compose up
 
 
-### 
+### Docker
 ```
+docker build -t opentraffic-datastore:v1.0.0 .
 
+docker image tag opentraffic-datastore:v1.0.0 chenmiaowei/opentraffic-datastore:v1.0.0
+docker push chenmiaowei/opentraffic-datastore:v1.0.0
+
+docker run -it -p 8003:8003 -e POSTGRES_USER= -e POSTGRES_DB= -e POSTGRES_PASSWORD= -e POSTGRES_HOST= -e POSTGRES_PORT= opentraffic-datastore:v1.0.0
 ```

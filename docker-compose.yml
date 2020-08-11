@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:9.6.1
+    networks:
+      - opentraffic_datastore
+    ports:
+      - "5432:5432"
+    volumes:
+      - ${PGDATA}:/data
+    env_file: .env
+
+  datastore:
+    image: opentraffic/datastore:latest
+    networks:
+      - opentraffic_datastore
+    ports:
+      - "8003:8003"
+    volumes:
+      - ${DATAPATH}:/data
+    env_file: .env
+
+networks:
+  opentraffic_datastore:
+    driver: bridge
